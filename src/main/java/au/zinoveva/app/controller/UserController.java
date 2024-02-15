@@ -13,12 +13,11 @@ import java.util.List;
 @Controller
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-@RequestMapping("/users")
 public class UserController {
 
     UserService service;
 
-    @GetMapping
+    @GetMapping("/users")
     public List<User> getAll() {
         return this.service.getAllUsers();
     }
@@ -28,7 +27,7 @@ public class UserController {
         return this.service.getUser(id);
     }
 
-    @PostMapping
+    @PostMapping("/users/body")
     public User save(@RequestBody User user) {
         return this.service.save(user);
     }
